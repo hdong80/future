@@ -32,6 +32,8 @@
 
         .participant {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
             background-color: #ffffff;
             border: 1px solid #ddd;
@@ -133,13 +135,8 @@
                 padding: 5px;
             }
 
-            .participant {
-                flex-wrap: wrap;
-            }
-
             .participant div, .participant a {
-                flex: 1;
-                white-space: normal;
+                flex-basis: 100%;
             }
 
             .date-info-container {
@@ -197,14 +194,6 @@
     <button id="tardy-summary" class="summary-button">지각: 0</button>
     <button id="absent-summary" class="summary-button">결석: 0</button>
 </div>
-
-<script>
-    // JavaScript 코드는 이전과 동일하게 유지됩니다.
-</script>
-
-</body>
-</html>
-
 
 <script>
 async function fetchSheetData() {
