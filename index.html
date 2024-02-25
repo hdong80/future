@@ -136,7 +136,8 @@
             }
 
             .participant div, .participant a {
-                flex-basis: 100%;
+                flex-basis: 50%;
+                max-width: calc(50% - 10px); /* 여백 고려 */
             }
 
             .date-info-container {
@@ -194,6 +195,7 @@
     <button id="tardy-summary" class="summary-button">지각: 0</button>
     <button id="absent-summary" class="summary-button">결석: 0</button>
 </div>
+
 
 <script>
 async function fetchSheetData() {
