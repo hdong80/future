@@ -50,18 +50,18 @@
             height: 80px;
             border-radius: 50%;
             object-fit: contain;
-            margin-right: 10px;
+            margin-bottom: 10px; /* 변경된 부분 */
         }
 
         .participant div, .participant a {
-            margin: 5px; /* 변경된 부분 */
+            margin: 5px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 120%; /* 변경된 부분 */
+            font-size: 120%;
             font-weight: bold;
             text-decoration: none;
-            text-align: center; /* 변경된 부분 */
+            text-align: center;
         }
 
         .date-info-container {
@@ -80,7 +80,7 @@
         .call-button, .reset-button, .capture-button {
             background-color: #ffff99;
             color: black;
-            padding: 6px 12px; /* 변경된 부분 */
+            padding: 6px 12px;
             text-decoration: none;
             border-radius: 8px;
             text-align: center;
@@ -93,9 +93,9 @@
 
         .status-button {
             background-color: #ffa07a;
-            padding: 6px 12px; /* 변경된 부분 */
+            padding: 8px 20px; /* 변경된 부분 */
             border-radius: 16px;
-            font-size: 12px; /* 변경된 부분 */
+            font-size: 14px;
             cursor: pointer;
             border: none;
             outline: none;
@@ -109,10 +109,10 @@
 
         .summary-button {
             background-color: #ffa07a;
-            padding: 6px 12px; /* 변경된 부분 */
+            padding: 6px 12px;
             margin: 0 5px;
             border-radius: 16px;
-            font-size: 12px; /* 변경된 부분 */
+            font-size: 12px;
             cursor: pointer;
             border: none;
             outline: none;
@@ -121,13 +121,14 @@
         .number-button {
             background-color: #9370DB;
             color: white;
-            padding: 6px 12px; /* 변경된 부분 */
+            padding: 6px 12px;
             border-radius: 16px;
             font-size: 12px;
             cursor: pointer;
             border: none;
             outline: none;
             margin-right: 5px;
+            order: -1; /* 변경된 부분 */
         }
 
         /* 모바일 환경 */
@@ -137,30 +138,46 @@
             }
 
             .participant div, .participant a {
-                flex-basis: 100%; /* 변경된 부분 */
-                max-width: 100%; /* 변경된 부분 */
-                text-align: center; /* 변경된 부분 */
+                flex-basis: 100%;
+                max-width: 100%;
+                text-align: center;
             }
 
             .participant-img {
-                order: -1; /* 이미지를 맨 위로 이동 */
+                margin-bottom: 10px;
             }
 
-            .participant div:nth-child(3) { /* 변경된 부분 */
-                order: 1; /* 학번을 아래로 이동 */
+            .participant div:nth-child(3) {
+                order: 1;
+                font-size: 200%; /* 변경된 부분 */
             }
 
-            .date-info-container {
-                padding: 10px;
-                font-size: 18px;
+            .participant div:nth-child(4) {
+                order: 2; /* 변경된 부분 */
+                font-size: 200%; /* 변경된 부분 */
             }
 
-            .date-info {
-                font-size: 30px;
+            .participant div:nth-child(5) {
+                order: 3; /* 변경된 부분 */
+                font-size: 200%; /* 변경된 부분 */
             }
 
-            .call-button, .reset-button, .capture-button {
-                margin-top: 5px; /* 변경된 부분 */
+            .participant div:nth-child(6) {
+                order: 4; /* 변경된 부분 */
+                font-size: 200%; /* 변경된 부분 */
+            }
+
+            .participant div:nth-child(n+7) {
+                order: 5; /* 변경된 부분 */
+            }
+
+            .number-button {
+                margin-right: 0; /* 변경된 부분 */
+            }
+
+            .status-button {
+                flex-grow: 1; /* 변경된 부분 */
+                font-size: 140%; /* 변경된 부분 */
             }
         }
     </style>
@@ -185,9 +202,6 @@
     <button id="tardy-summary" class="summary-button">지각: 0</button>
     <button id="absent-summary" class="summary-button">결석: 0</button>
 </div>
-
-
-
 
 
 <script>
