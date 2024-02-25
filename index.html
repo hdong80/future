@@ -54,13 +54,14 @@
         }
 
         .participant div, .participant a {
-            margin: 0 5px;
+            margin: 5px; /* 변경된 부분 */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 140%;
+            font-size: 120%; /* 변경된 부분 */
             font-weight: bold;
             text-decoration: none;
+            text-align: center; /* 변경된 부분 */
         }
 
         .date-info-container {
@@ -79,12 +80,12 @@
         .call-button, .reset-button, .capture-button {
             background-color: #ffff99;
             color: black;
-            padding: 8px 15px;
+            padding: 6px 12px; /* 변경된 부분 */
             text-decoration: none;
             border-radius: 8px;
             text-align: center;
             margin-top: 8px;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
             cursor: pointer;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -92,9 +93,9 @@
 
         .status-button {
             background-color: #ffa07a;
-            padding: 8px 20px;
+            padding: 6px 12px; /* 변경된 부분 */
             border-radius: 16px;
-            font-size: 14px;
+            font-size: 12px; /* 변경된 부분 */
             cursor: pointer;
             border: none;
             outline: none;
@@ -108,10 +109,10 @@
 
         .summary-button {
             background-color: #ffa07a;
-            padding: 8px 15px;
+            padding: 6px 12px; /* 변경된 부분 */
             margin: 0 5px;
             border-radius: 16px;
-            font-size: 14px;
+            font-size: 12px; /* 변경된 부분 */
             cursor: pointer;
             border: none;
             outline: none;
@@ -120,9 +121,9 @@
         .number-button {
             background-color: #9370DB;
             color: white;
-            padding: 8px 15px;
+            padding: 6px 12px; /* 변경된 부분 */
             border-radius: 16px;
-            font-size: 14px;
+            font-size: 12px;
             cursor: pointer;
             border: none;
             outline: none;
@@ -136,8 +137,17 @@
             }
 
             .participant div, .participant a {
-                flex-basis: 50%;
-                max-width: calc(50% - 10px); /* 여백 고려 */
+                flex-basis: 100%; /* 변경된 부분 */
+                max-width: 100%; /* 변경된 부분 */
+                text-align: center; /* 변경된 부분 */
+            }
+
+            .participant-img {
+                order: -1; /* 이미지를 맨 위로 이동 */
+            }
+
+            .participant div:nth-child(3) { /* 변경된 부분 */
+                order: 1; /* 학번을 아래로 이동 */
             }
 
             .date-info-container {
@@ -150,27 +160,7 @@
             }
 
             .call-button, .reset-button, .capture-button {
-                padding: 6px 12px;
-                font-size: 16px;
-            }
-
-            .status-button {
-                padding: 6px 16px;
-                font-size: 12px;
-            }
-
-            .summary-container {
-                margin-top: 10px;
-            }
-
-            .summary-button {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-
-            .number-button {
-                padding: 6px 12px;
-                font-size: 12px;
+                margin-top: 5px; /* 변경된 부분 */
             }
         }
     </style>
@@ -195,6 +185,7 @@
     <button id="tardy-summary" class="summary-button">지각: 0</button>
     <button id="absent-summary" class="summary-button">결석: 0</button>
 </div>
+
 
 
 <script>
