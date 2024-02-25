@@ -253,6 +253,7 @@ function createParticipantElement(participantData, index) {
         callButton1.textContent = '-';
         participantDiv.classList.add('no-phone');
     }
+    callButton1.style.display = 'block'; // 전화 버튼이 줄바꿈되도록 추가
 
     const callButton2 = document.createElement('a');
     if (additionalPhone && additionalPhone.trim() !== '') {
@@ -262,6 +263,7 @@ function createParticipantElement(participantData, index) {
     } else {
         callButton2.textContent = '-';
     }
+    callButton2.style.display = 'block'; // 학부모 버튼이 줄바꿈되도록 추가
 
     const noteInput = document.createElement('input');
     noteInput.type = 'text';
@@ -281,7 +283,7 @@ function createParticipantElement(participantData, index) {
         img.src = photoUrl;
         img.alt = 'Participant Image';
         img.classList.add('participant-img');
-        participantDiv.insertBefore(img, statusButton.nextSibling); // 터치 버튼 다음에 사진 추가
+        participantDiv.insertBefore(img, statusButton.nextSibling);
     }
 
     let clickCount = 0;
@@ -312,6 +314,7 @@ function createParticipantElement(participantData, index) {
 
     return participantDiv;
 }
+
 
 async function displayParticipants() {
     const data = await fetchSheetData();
