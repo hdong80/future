@@ -362,72 +362,7 @@ captureButton.onclick = () => {
         link.click();
     });
 };
- // 팝업 생성 함수
-function createDownloadPopup(imageData) {
-    // 팝업 컨테이너 생성
-    const popupContainer = document.createElement('div');
-    popupContainer.style.position = 'fixed';
-    popupContainer.style.left = '0';
-    popupContainer.style.top = '0';
-    popupContainer.style.width = '100%';
-    popupContainer.style.height = '100%';
-    popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    popupContainer.style.display = 'flex';
-    popupContainer.style.justifyContent = 'center';
-    popupContainer.style.alignItems = 'center';
-    popupContainer.style.zIndex = '10000';
 
-    // 팝업 박스 생성
-    const popupBox = document.createElement('div');
-    popupBox.style.backgroundColor = '#fff';
-    popupBox.style.padding = '20px';
-    popupBox.style.borderRadius = '10px';
-    popupBox.style.textAlign = 'center';
-
-    // 이미지 다운로드 링크 생성
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageData;
-    downloadLink.download = 'captured_image.png';
-    downloadLink.textContent = '이미지 다운로드';
-    downloadLink.style.display = 'inline-block';
-    downloadLink.style.marginBottom = '20px';
-    downloadLink.style.backgroundColor = '#4CAF50';
-    downloadLink.style.color = 'white';
-    downloadLink.style.padding = '10px 20px';
-    downloadLink.style.textDecoration = 'none';
-    downloadLink.style.borderRadius = '5px';
-
-    // 닫기 버튼 생성
-    const closeButton = document.createElement('button');
-    closeButton.textContent = '닫기';
-    closeButton.style.display = 'inline-block';
-    closeButton.style.backgroundColor = '#f44336';
-    closeButton.style.color = 'white';
-    closeButton.style.border = 'none';
-    closeButton.style.padding = '10px 20px';
-    closeButton.style.textDecoration = 'none';
-    closeButton.style.borderRadius = '5px';
-    closeButton.style.marginTop = '10px';
-    closeButton.onclick = function() {
-        document.body.removeChild(popupContainer);
-    };
-
-    // 팝업 박스에 요소 추가
-    popupBox.appendChild(downloadLink);
-    popupBox.appendChild(closeButton);
-    popupContainer.appendChild(popupBox);
-
-    // 팝업 컨테이너를 body에 추가
-    document.body.appendChild(popupContainer);
-}
-
-// 화면 캡처 버튼 이벤트 핸들러 수정
-captureButton.onclick = () => {
-    html2canvas(document.body).then(canvas => {
-        const imageData = canvas.toDataURL();
-        createDownloadPopup(imageData); // 캡처한 이미지를 다운로드할 수 있는 팝업 생성
-    });
-};
 // Summary button elements
 const attendanceSummaryButton = document.getElementById('attendance-summary');
 const tardySummaryButton = document.getElementById('tardy-summary');
