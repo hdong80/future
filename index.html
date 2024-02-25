@@ -9,10 +9,10 @@
     <!-- HTML2Canvas 라이브러리 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <style>
-        /* 글씨 크기 조정 및 이름 아래 검은 줄 제거 */
+        /* 공통 스타일 */
         body {
             font-family: 'Dongle', sans-serif;
-            font-size: 110%; /* 전체 글씨 크기 10% 줄임 */
+            font-size: 110%;
             margin: 0;
             padding: 0;
             display: flex;
@@ -23,24 +23,11 @@
         }
 
         .container {
-            width: 90%; /* 전체 너비를 90%로 조정 */
-            max-width: 720px; /* 최대 너비를 720px로 제한 */
+            width: 90%;
+            max-width: 720px;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .date-info-container {
-            background-color: lightyellow;
-            border-radius: 10px;
-            padding: 15px; /* 패딩을 15px로 조정 */
-            margin-bottom: 15px; /* 마진을 15px로 조정 */
-            font-size: 22px; /* 폰트 크기를 22px로 조정 */
-        }
-
-        .date-info {
-            text-align: center;
-            font-size: 40px; /* 날짜 크기를 40px로 조정 */
         }
 
         .participant {
@@ -48,78 +35,64 @@
             align-items: center;
             background-color: #ffffff;
             border: 1px solid #ddd;
-            border-radius: 8px; /* 테두리 반경을 8px로 조정 */
-            padding: 8px; /* 패딩을 8px로 조정 */
-            margin-bottom: 8px; /* 마진을 8px로 조정 */
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 8px;
             width: 100%;
             cursor: pointer;
             position: relative;
         }
 
         .participant-img {
-            width: 80px; /* 이미지 크기를 80px로 조정 */
-            height: 80px; /* 이미지 크기를 80px로 조정 */
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: contain;
-            margin-right: 10px; /* 마진을 10px로 조정 */
+            margin-right: 10px;
         }
 
         .participant div, .participant a {
-            margin: 0 5px; /* 마진을 0 5px로 조정 */
+            margin: 0 5px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 140%; /* 이름 크기를 140%로 조정 */
+            font-size: 140%;
             font-weight: bold;
-            text-decoration: none; /* 이름 아래 검은 줄 제거 */
+            text-decoration: none;
+        }
+
+        .date-info-container {
+            background-color: lightyellow;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .date-info {
+            text-align: center;
+            font-size: 40px;
         }
 
         .call-button, .reset-button, .capture-button {
             background-color: #ffff99;
             color: black;
-            padding: 8px 15px; /* 패딩을 8px 15px로 조정 */
+            padding: 8px 15px;
             text-decoration: none;
             border-radius: 8px;
             text-align: center;
-            margin-top: 8px; /* 마진을 8px로 조정 */
-            font-size: 18px; /* 버튼 폰트 크기를 18px로 조정 */
+            margin-top: 8px;
+            font-size: 18px;
             border: none;
             cursor: pointer;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .participant:hover {
-            /* 마우스가 행 위에 올라갔을 때 색상 변경 제거 */
-        }
-
-        .name-box {
-            background-color: lightyellow;
-            border-radius: 8px;
-            padding: 3px 8px; /* 패딩을 3px 8px로 조정 */
-            cursor: pointer;
-            font-size: 16px; /* 폰트 크기를 16px로 조정 */
-            text-decoration: none; /* 이름의 하이퍼링크 제거 */
-        }
-
-        .name-box:hover {
-            /* 마우스가 행 위에 올라갔을 때 색상 변경 제거 */
-        }
-
-        .note-input {
-            flex-grow: 1;
-            min-width: 80px; /* 최소 너비를 80px로 조정 */
-            margin-left: 5px; /* 마진을 5px로 조정 */
-            padding: 3px 8px; /* 패딩을 3px 8px로 조정 */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px; /* 폰트 크기를 14px로 조정 */
-        }
-
         .status-button {
-            background-color: #ffa07a; /* 매우 연한 주황색 */
-            padding: 8px 20px; /* 패딩을 8px 20px로 조정 */
-            border-radius: 16px; /* 테두리 반경을 16px로 조정 */
-            font-size: 14px; /* 폰트 크기를 14px로 조정 */
+            background-color: #ffa07a;
+            padding: 8px 20px;
+            border-radius: 16px;
+            font-size: 14px;
             cursor: pointer;
             border: none;
             outline: none;
@@ -128,35 +101,36 @@
         .summary-container {
             display: flex;
             justify-content: center;
-            margin-top: 15px; /* 마진을 15px로 조정 */
+            margin-top: 15px;
         }
 
         .summary-button {
-            background-color: #ffa07a; /* 연한 주황색 */
-            padding: 8px 15px; /* 패딩을 8px 15px로 조정 */
-            margin: 0 5px; /* 마진을 0 5px로 조정 */
-            border-radius: 16px; /* 테두리 반경을 16px로 조정 */
-            font-size: 14px; /* 폰트 크기를 14px로 조정 */
+            background-color: #ffa07a;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 16px;
+            font-size: 14px;
             cursor: pointer;
             border: none;
             outline: none;
         }
 
         .number-button {
-            background-color: #9370DB; /
+            background-color: #9370DB;
             color: white;
-            padding: 8px 15px; /* 패딩을 8px 15px로 조정 */
-            border-radius: 16px; /* 테두리 반경을 16px로 조정 */
-            font-size: 14px; /* 폰트 크기를 14px로 조정 */
+            padding: 8px 15px;
+            border-radius: 16px;
+            font-size: 14px;
             cursor: pointer;
             border: none;
             outline: none;
-            margin-right: 5px; /* 마진을 5px로 조정 */
+            margin-right: 5px;
         }
 
+        /* 모바일 환경 */
         @media only screen and (max-width: 600px) {
             .container {
-                padding: 5px; /* 패딩을 5px로 조정 */
+                padding: 5px;
             }
 
             .participant {
@@ -166,6 +140,39 @@
             .participant div, .participant a {
                 flex: 1;
                 white-space: normal;
+            }
+
+            .date-info-container {
+                padding: 10px;
+                font-size: 18px;
+            }
+
+            .date-info {
+                font-size: 30px;
+            }
+
+            .call-button, .reset-button, .capture-button {
+                padding: 6px 12px;
+                font-size: 16px;
+            }
+
+            .status-button {
+                padding: 6px 16px;
+                font-size: 12px;
+            }
+
+            .summary-container {
+                margin-top: 10px;
+            }
+
+            .summary-button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .number-button {
+                padding: 6px 12px;
+                font-size: 12px;
             }
         }
     </style>
@@ -190,6 +197,14 @@
     <button id="tardy-summary" class="summary-button">지각: 0</button>
     <button id="absent-summary" class="summary-button">결석: 0</button>
 </div>
+
+<script>
+    // JavaScript 코드는 이전과 동일하게 유지됩니다.
+</script>
+
+</body>
+</html>
+
 
 <script>
 async function fetchSheetData() {
