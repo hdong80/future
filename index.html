@@ -227,6 +227,10 @@ function createParticipantElement(participantData, index) {
     participantDiv.classList.add('participant');
     participantDiv.dataset.defaultColor = '#ffffff';
 
+    const numberButton = document.createElement('button');
+    numberButton.textContent = index + 1;
+    numberButton.classList.add('number-button');
+
     const statusButton = document.createElement('button');
     statusButton.textContent = '터치';
     statusButton.classList.add('status-button');
@@ -234,11 +238,7 @@ function createParticipantElement(participantData, index) {
     const serialDiv = document.createElement('div');
     serialDiv.textContent = serial;
     serialDiv.classList.add('serial-number');
-    serialDiv.style.marginRight = '10px'; /* 학생 순번을 오른쪽으로 조금 이동 */
-    
-    const numberButton = document.createElement('button');
-    numberButton.textContent = index + 1;
-    numberButton.classList.add('number-button');
+    serialDiv.style.marginRight = '10px';
 
     const nameDiv = document.createElement('div');
     nameDiv.textContent = name || '-';
@@ -269,28 +269,27 @@ function createParticipantElement(participantData, index) {
     noteInput.classList.add('note-input');
 
     participantDiv.appendChild(numberButton);
-    participantDiv.appendChild(serialDiv);
     participantDiv.appendChild(statusButton);
-    
+    participantDiv.appendChild(serialDiv);
+    participantDiv.appendChild(nameDiv);
+    participantDiv.appendChild(callButton1);
+    participantDiv.appendChild(callButton2);
+    participantDiv.appendChild(noteInput);
+
     if (photoUrl) {
         const img = document.createElement('img');
         img.src = photoUrl;
         img.alt = 'Participant Image';
         img.classList.add('participant-img');
-        participantDiv.appendChild(img);
+        participantDiv.insertBefore(img, statusButton.nextSibling); // 터치 버튼 다음에 사진 추가
     }
-
-    participantDiv.appendChild(nameDiv);
-    participantDiv.appendChild(callButton1);
-    participantDiv.appendChild(callButton2);
-    participantDiv.appendChild(noteInput);
 
     let clickCount = 0;
     statusButton.onclick = () => {
         clickCount++;
         switch (clickCount) {
             case 1:
-                participantDiv.style.backgroundColor = 'lightskyblue'; /* 연한 하늘색 */
+                participantDiv.style.backgroundColor = 'lightskyblue';
                 statusButton.textContent = '출석';
                 break;
             case 2:
@@ -308,7 +307,6 @@ function createParticipantElement(participantData, index) {
                 break;
         }
 
-        // Update summary counts
         updateSummaryCounts();
     };
 
