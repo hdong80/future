@@ -479,9 +479,10 @@
     const dateString = today.toLocaleDateString('ko-KR', options); // 오늘 날짜와 요일
 
     const eventNameInput = document.getElementById('event-name-input');
-    const eventName = eventNameInput.value; // 행사명 입력 필드에서 행사명 가져오기
+    const eventName = eventNameInput.value.trim(); // 행사명 입력 필드에서 행사명 가져오기 및 공백 제거
 
-    const title = `날짜: ${dateString}\n행사명: ${eventName}\n\n`; // 제목 줄에 날짜와 행사명 추가
+    // 행사명이 비어있는 경우 빈 줄로, 그렇지 않은 경우 '행사명: '과 함께 행사명 추가
+    const title = eventName ? `날짜: ${dateString}\n행사명: ${eventName}\n\n` : `날짜: ${dateString}\n\n`;
 
     const participantElements = document.querySelectorAll('.participant');
     let attendanceList = '출석\n';
